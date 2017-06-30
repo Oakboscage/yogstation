@@ -79,6 +79,9 @@
 					C.overlays.Cut()
 		reagents.reaction(A, TOUCH, 5)	//Needed for proper floor wetting
 		reagents.remove_all(1)			//reaction() doesn't use up the reagents
+		if(reagents.has_reagent("water", 1) || reagents.has_reagent("holywater", 1))
+			reagents.reaction(A, TOUCH, 200)	//Needed for proper floor wetting.
+			reagents.remove_any(1)		//reaction() doesn't use up the reagents
 	else if(user.a_intent != "harm")
 		A.visible_message("[user] starts to wipe down [A] with [src]!", "<span class='notice'>You start to wipe down [A] with [src]...</span>")
 		if(!do_after(user,mopspeed, target = A))
